@@ -16,6 +16,7 @@ canvas#world {
   border: 1px solid #000;
   background-color: #673520;
   border-radius: 5x;
+  zoom: 240%;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }

@@ -4,8 +4,8 @@ import (
 	"math/rand"
 )
 
-const MaxX = 640
-const MaxY = 480
+const MaxX = 320
+const MaxY = 240
 const MinX = 0
 const MinY = 0
 
@@ -16,7 +16,7 @@ type Worm struct {
 }
 
 func New() Worm {
-	return Worm{Dir: "up", X: rand.Intn(640), Y: rand.Intn(360)}
+	return Worm{Dir: "up", X: rand.Intn(MaxX), Y: rand.Intn(MaxY)}
 }
 
 func (w *Worm) Move() {
@@ -32,9 +32,9 @@ func (w *Worm) setDirection() {
 func (w *Worm) advancePosition() {
 	switch w.Dir {
 	case "up":
-		w.Y++
-	case "down":
 		w.Y--
+	case "down":
+		w.Y++
 	case "right":
 		w.X++
 	case "left":
