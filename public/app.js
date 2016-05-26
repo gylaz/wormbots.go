@@ -3,7 +3,7 @@
   var canvas = document.getElementById("world");
   var context = canvas.getContext("2d");
   var opacity = "1";
-  var rgbRange = "200, 86, 86";
+  var rgbRange = "240, 30, 8";
 
   source.onopen = function() { console.log("connection opened"); };
   source.onclose = function() { console.log("connection closed"); };
