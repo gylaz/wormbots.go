@@ -6,7 +6,7 @@ import (
 	"github.com/gylaz/wormbots.go/worm"
 )
 
-func TestMovingUpIntoRightTopCorner(t *testing.T) {
+func TestMovingUpIntoTopRightCorner(t *testing.T) {
 	w := worm.Worm{Dir: "up", X: worm.MaxX, Y: worm.MinY}
 
 	w.Move()
@@ -20,7 +20,7 @@ func TestMovingUpIntoRightTopCorner(t *testing.T) {
 	}
 }
 
-func TestWormMovingRightIntoRightTopCorner(t *testing.T) {
+func TestWormMovingRightIntoTopRightCorner(t *testing.T) {
 	w := worm.Worm{Dir: "right", X: worm.MaxX, Y: worm.MinY}
 
 	w.Move()
@@ -34,16 +34,16 @@ func TestWormMovingRightIntoRightTopCorner(t *testing.T) {
 	}
 }
 
-func TestMovingRightIntoRightTopCorner(t *testing.T) {
-	w := worm.Worm{Dir: "right", X: worm.MaxX, Y: worm.MinY}
+func TestMovingRightIntoBottomRightCorner(t *testing.T) {
+	w := worm.Worm{Dir: "right", X: worm.MaxX, Y: worm.MaxY}
 
 	w.Move()
 
-	if w.Dir != "down" {
+	if w.Dir != "up" {
 		t.Error("Worm did not turn")
 	}
 
-	if w.X != worm.MaxX && w.Y != worm.MinY+1 {
+	if w.X != worm.MaxX && w.Y != worm.MaxY-1 {
 		t.Error("Worm did not move")
 	}
 }

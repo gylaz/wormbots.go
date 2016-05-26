@@ -50,25 +50,25 @@ func (w *Worm) availableDirs() []string {
 		dirs = append(dirs, w.availableHorizontalDirs()...)
 
 		if w.Y > MinY {
-			dirs = append(dirs, "up")
+			dirs = addWeight(dirs, w.Dir)
 		}
 	case "down":
 		dirs = append(dirs, w.availableHorizontalDirs()...)
 
 		if w.Y < MaxY {
-			dirs = append(dirs, "down")
+			dirs = addWeight(dirs, w.Dir)
 		}
 	case "left":
 		dirs = append(dirs, w.availableVerticalDirs()...)
 
 		if w.X > MaxX {
-			dirs = append(dirs, "left")
+			dirs = addWeight(dirs, w.Dir)
 		}
 	case "right":
 		dirs = append(dirs, w.availableVerticalDirs()...)
 
 		if w.X < MaxX {
-			dirs = append(dirs, "right")
+			dirs = addWeight(dirs, w.Dir)
 		}
 	}
 
@@ -93,4 +93,14 @@ func (w *Worm) availableVerticalDirs() []string {
 	} else {
 		return []string{"up", "down"}
 	}
+}
+
+func addWeight(dirs []string, weighWith string) []string {
+	weights := make([]string, 20)
+
+	for i, _ := range weights {
+		weights[i] = weighWith
+	}
+
+	return append(dirs, weights...)
 }
