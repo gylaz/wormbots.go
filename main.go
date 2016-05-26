@@ -18,7 +18,7 @@ func streamData(f *farm.Farm) func(http.ResponseWriter, *http.Request) {
 		for {
 			fmt.Fprintf(res, "data: %v\n\n", data(f))
 			res.(http.Flusher).Flush()
-			time.Sleep(time.Second)
+			time.Sleep(time.Second / 15)
 			f.Tick()
 		}
 	}
