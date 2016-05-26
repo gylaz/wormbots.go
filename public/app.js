@@ -2,14 +2,21 @@
   var source = new EventSource("/world");
   var canvas = document.getElementById("world");
   var context = canvas.getContext("2d");
+  var opacity = "1";
+  var rgbRange = "200, 86, 86";
 
   source.onopen = function() { console.log("connection opened"); };
   source.onclose = function() { console.log("connection closed"); };
   source.onmessage = function(e) {
     var worms = e.data;
+    var worms = JSON.parse(e.data);
 
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.font = "32px serif";
-    context.fillText(worms, 100, 40);
+
+    worms.forEach(function(worm) {
+      console.log(worm.x, worm.y);
+      context.fillStyle = 'rgba(' + rgbRange + ', ' + opacity + ')';
+      context.fillRect(worm.x, worm.y, 2, 2);
+    });
   };
 })();

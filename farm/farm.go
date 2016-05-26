@@ -1,17 +1,16 @@
 package farm
 
-import "math/rand"
+import "github.com/gylaz/wormbots.go/worm"
 
 type Farm struct {
-	Worms []worm
+	Worms []worm.Worm
 }
 
 func New() Farm {
-	farm := Farm{make([]worm, 10)}
+	farm := Farm{make([]worm.Worm, 10)}
 
 	for i := 0; i < len(farm.Worms); i++ {
-		w := worm{Dir: "up", X: rand.Intn(640), Y: rand.Intn(360)}
-		farm.Worms[i] = w
+		farm.Worms[i] = worm.New()
 	}
 
 	return farm
