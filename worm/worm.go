@@ -1,8 +1,6 @@
 package worm
 
-import (
-	"math/rand"
-)
+import "math/rand"
 
 const MaxX = 320
 const MaxY = 240
@@ -61,7 +59,7 @@ func (w *Worm) availableDirs() []string {
 	case "left":
 		dirs = append(dirs, w.availableVerticalDirs()...)
 
-		if w.X > MaxX {
+		if w.X > MinX {
 			dirs = addWeight(dirs, w.Dir)
 		}
 	case "right":
@@ -95,11 +93,11 @@ func (w *Worm) availableVerticalDirs() []string {
 	}
 }
 
-func addWeight(dirs []string, weighWith string) []string {
+func addWeight(dirs []string, weighWithDir string) []string {
 	weights := make([]string, 20)
 
 	for i, _ := range weights {
-		weights[i] = weighWith
+		weights[i] = weighWithDir
 	}
 
 	return append(dirs, weights...)
