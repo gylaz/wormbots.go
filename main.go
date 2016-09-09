@@ -9,6 +9,8 @@ import (
 	"github.com/gylaz/wormbots.go/farm"
 )
 
+const framesPerSecond = 10
+
 func main() {
 	mux := http.NewServeMux()
 	fs := http.FileServer(http.Dir("public"))
@@ -16,7 +18,7 @@ func main() {
 
 	go func() {
 		for {
-			time.Sleep(time.Second / 15)
+			time.Sleep(time.Second / framesPerSecond)
 
 			f.Tick()
 		}
@@ -38,7 +40,7 @@ func streamData(f *farm.Farm) func(http.ResponseWriter, *http.Request) {
 			worms, _ := json.Marshal(f.Worms)
 			fmt.Fprintf(res, "data: %v\n\n", string(worms))
 			res.(http.Flusher).Flush()
-			time.Sleep(time.Second / 15)
+			time.Sleep(time.Second / framesPerSecond)
 		}
 	}
 }

@@ -14,7 +14,7 @@
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     worms.forEach(function(worm) {
-      console.log(worm);
+      // console.log(worm);
       context.fillStyle = "rgba(" + rgbRange + ", " + opacity + ")";
       context.fillRect(worm.x, worm.y, 1, 1);
     });
